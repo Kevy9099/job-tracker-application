@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import type { ApplicationCreate, ApplicationStatus } from "../types/Application";
+import type { ApplicationCreate, ApplicationStatus } from "../types/application";
 
 const STATUSES: ApplicationStatus[] = ["Applied", "Interview", "Offer", "Rejected"];
 

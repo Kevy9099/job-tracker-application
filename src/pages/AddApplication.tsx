@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PageContainer from "../components/PageContainer";
 import ApplicationForm from "../components/ApplicationForm";
 import { createApplication } from "../api/applicationApi";
-import type { ApplicationCreate } from "../types/Application";
+import type { ApplicationCreate } from "../types/application";
 
 export default function AddApplication() {
   const nav = useNavigate();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, Card } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import PageContainer from "../components/PageContainer";
 import ApplicationForm from "../components/ApplicationForm";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
@@ -10,7 +10,7 @@ import ToastMessage from "../components/ToastMessage";
 import StatusBadge from "../components/StatusBadge";
 
 import { deleteApplication, getApplicationById, updateApplication } from "../api/applicationApi";
-import type { Application, ApplicationCreate } from "../types/Application";
+import type { Application, ApplicationCreate } from "../types/application";
 
 export default function ApplicationDetails() {
   const { id } = useParams();
@@ -77,9 +77,9 @@ export default function ApplicationDetails() {
     <PageContainer
       title="Application Details"
       right={
-        <Button as={Link as any} to="/applications" variant="outline-secondary">
-          ← Back
-        </Button>
+        <Link to="/applications" style={{ textDecoration: "none" }}>
+          <Button variant="outline-secondary">← Back</Button>
+        </Link>
       }
     >
       {loading ? (

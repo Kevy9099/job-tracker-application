@@ -1,4 +1,4 @@
-import type { Application, ApplicationCreate, ApplicationUpdate } from "../types/Application"
+import type { Application, ApplicationCreate, ApplicationUpdate } from "../types/application";
 
 const BASE_URL = "http://localhost:3001/applications";
 
@@ -27,6 +27,7 @@ export async function createApplication(payload: ApplicationCreate): Promise<App
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
     });
+    console.log("CREATE payload:", payload);
     return handle<Application>(res, "Failed to create application");
 }
 
@@ -35,7 +36,7 @@ export async function updateApplication(id: number, updates: ApplicationUpdate):
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updates),
-    })
+    });
     return handle<Application>(res, "Failed to update application");
 }
 

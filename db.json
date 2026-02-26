@@ -1,3 +1,24 @@
 {
-  "applications": []
+  "applications": [
+    {
+      "company": "Google",
+      "position": "Frontend Developer",
+      "status": "Rejected",
+      "location": "Remote",
+      "dateApplied": "2026-02-25",
+      "notes": "Submitted via careers page",
+      "link": "https://example.com/job",
+      "id": 1
+    },
+    {
+      "company": "Harris Computer",
+      "position": "Frontend Developer",
+      "status": "Applied",
+      "location": "",
+      "dateApplied": "",
+      "link": "",
+      "notes": "",
+      "id": 2
+    }
+  ]
 }

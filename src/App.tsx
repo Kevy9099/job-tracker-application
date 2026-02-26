@@ -15,7 +15,7 @@ export default function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/applications" element={<Applications />}/>
           <Route path="/add" element={<AddApplication />}/>
-          <Route path="applications/:id" element={<ApplicationDetails />}/>
+          <Route path="/applications/:id" element={<ApplicationDetails />} />
         </Routes>
         <AppFooter />
     </BrowserRouter>

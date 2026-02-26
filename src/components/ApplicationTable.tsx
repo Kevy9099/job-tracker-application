@@ -1,7 +1,7 @@
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import { Table }from "react-bootstrap"
 import { Link } from "react-router-dom";
-import type { Application } from "../types/Application";
+import type { Application } from "../types/application";
 import StatusBadge from "./StatusBadge";
 
 type Props = {
@@ -40,9 +40,9 @@ export default function ApplicationTable({ rows, onDelete }: Props) {
               </td>
               <td>{a.location || "-"}</td>
               <td className="d-flex gap-2 flex-wrap">
-                <Button variant="primary" size="sm" as={Link as any} to={`/applications/${a.id}`} >
-                  View / Edit
-                </Button>
+                <Link to={`/applications/${a.id}`} style={{ textDecoration: "none" }}>
+                  <Button variant="primary" size="sm">View / Edit</Button>
+                </Link>
                 <Button variant="outline-danger" size="sm" onClick={() => onDelete(a)}>
                   Delete
                 </Button>

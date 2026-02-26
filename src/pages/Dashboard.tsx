@@ -4,7 +4,7 @@ import PageContainer from "../components/PageContainer";
 import StatCard from "../components/StatCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { getApplications } from "../api/applicationApi";
-import type { Application } from "../types/Application";
+import type { Application }  from "../types/application";
 
 export default function Dashboard() {
   const [apps, setApps] = useState<Application[]>([]);

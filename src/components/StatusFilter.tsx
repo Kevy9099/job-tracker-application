@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-import type { ApplicationStatus } from "../types/Application";
+import type { ApplicationStatus } from "../types/application";
 
 const STATUSES: Array<"All" | ApplicationStatus> = ["All", "Applied", "Interview", "Offer", "Rejected"];
 

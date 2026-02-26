@@ -1,5 +1,5 @@
 import { Badge } from "react-bootstrap";
-import type { ApplicationStatus } from "../types/Application";
+import type { ApplicationStatus } from "../types/application";
 
 function variantFor(status?: ApplicationStatus) {
   switch ((status || "").toLowerCase()) {

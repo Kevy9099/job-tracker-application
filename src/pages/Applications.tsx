@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Alert, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import PageContainer from "../components/PageContainer";
 import SearchBar from "../components/SearchBar";
 import StatusFilter from "../components/StatusFilter";
@@ -10,7 +10,7 @@ import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ToastMessage from "../components/ToastMessage";
 import { deleteApplication, getApplications } from "../api/applicationApi";
-import type { Application, ApplicationStatus } from "../types/Application";
+import type { Application, ApplicationStatus } from "../types/application";
 
 export default function Applications() {
   const [apps, setApps] = useState<Application[]>([]);
@@ -71,9 +71,9 @@ export default function Applications() {
     <PageContainer
       title="Applications"
       right={
-        <Button as={Link as any} to="/add">
-          + Add Application
-        </Button>
+        <Link to="/add">
+          <Button>+ Add Application</Button>
+        </Link>
       }
     >
       <Row className="g-2 align-items-center mb-3">
