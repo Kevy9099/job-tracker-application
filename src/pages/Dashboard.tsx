@@ -6,13 +6,17 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { getApplications } from "../api/applicationApi";
 import type { Application }  from "../types/application";
 
+/**
+ * The functions Dashboard runs one time when the Dashboard loads ([] dependency array).
+ * Fetchs all applications. Updates apps, err, loading.
+ */
 export default function Dashboard() {
-  const [apps, setApps] = useState<Application[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
+  const [apps, setApps] = useState<Application[]>([]); // List of applications from the API
+  const [loading, setLoading] = useState(true); // Shows spinnger while fetching
+  const [err, setErr] = useState(""); // shows an error banner if fetch fails
 
   useEffect(() => {
-    let alive = true;
+    let alive = true;// Alive is a safety guard to avoid common warning.
     (async () => {
       try {
         setErr("");
@@ -34,11 +38,11 @@ export default function Dashboard() {
   }, []);
 
   const stats = useMemo(() => {
-    const total = apps.length;
-    const count = (s: string) => apps.filter((a) => (a.status || "").toLowerCase() === s).length;
+    const total = apps.length; // Number of applications
+    const count = (s: string) => apps.filter((a) => (a.status || "").toLowerCase() === s).length; // Not really needed but for extra safety
     return {
       total,
-      applied: count("applied"),
+      applied: count("applied"), // counts how many apps have status "Applied"
       interview: count("interview"),
       offer: count("offer"),
       rejected: count("rejected"),

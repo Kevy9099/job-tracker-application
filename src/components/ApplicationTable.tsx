@@ -1,3 +1,7 @@
+/**
+ * The ApplicationTable component is a presentational table: it takes rows(data) and an on Delete
+ * callback (an action), then renders a Bootstrap table with "veiw/edit" and "delete" buttons for each row.
+ */
 import { Button } from "react-bootstrap";
 import { Table }from "react-bootstrap"
 import { Link } from "react-router-dom";
@@ -5,8 +9,8 @@ import type { Application } from "../types/application";
 import StatusBadge from "./StatusBadge";
 
 type Props = {
-  rows: Application[];
-  onDelete: (app: Application) => void;
+  rows: Application[]; // the list of applications to display (already filtered/sorted by the parent)
+  onDelete: (app: Application) => void; // A function provided by the parent (Applications page) that runs when the user clicks delete on a row
 };
 
 export default function ApplicationTable({ rows, onDelete }: Props) {

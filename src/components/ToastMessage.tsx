@@ -1,10 +1,13 @@
+/**
+ * This ToastMessage is a reusable notification component. It's fully controlled by the parent and uses Bootstrap's built-in toast behavior correctly.
+ */
 import {Toast, ToastContainer } from "react-bootstrap";
 
 type Props = {
-    show: boolean;
-    onClose: () => void;
-    title: string;
-    message: string;
+    show: boolean; // controls visibility
+    onClose: () => void; // Runs when toast closes
+    title: string; // Header text
+    message: string; // Body content
 };
 
 export default function ToastMessage({ show, onClose, title, message}: Props){

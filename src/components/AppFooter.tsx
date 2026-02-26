@@ -1,3 +1,4 @@
+/** HTML Footer to display @ date */
 import { Container } from "react-bootstrap";
 
 export default function AppFooter(){

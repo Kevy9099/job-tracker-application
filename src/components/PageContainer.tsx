@@ -1,10 +1,13 @@
+/**
+ * This is a layout wrapper component.
+ */
 import type { ReactNode } from "react";
 import { Container } from "react-bootstrap";
 
 type Props = {
-    title: string;
-    children: ReactNode;
-    right?: ReactNode;
+    title: string; // The page heading
+    children: ReactNode; // This is page content
+    right?: ReactNode; // Optional content that appears aligned to the right of the title
 };
 
 export default function PageContainer ({ title, children, right }: Props){

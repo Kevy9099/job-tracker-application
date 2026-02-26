@@ -1,3 +1,7 @@
+/**
+ * The AppNavbar is a clean integration of React Router + React Bootstrap. 
+ * It a responsive, sticky navigation bar with active-link styling
+ */
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 

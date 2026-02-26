@@ -13,15 +13,16 @@ import { deleteApplication, getApplications } from "../api/applicationApi";
 import type { Application, ApplicationStatus } from "../types/application";
 
 export default function Applications() {
-  const [apps, setApps] = useState<Application[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
+  const [apps, setApps] = useState<Application[]>([]); // The full list from the API
+  const [loading, setLoading] = useState(true); // Controls the spinner
+  const [err, setErr] = useState(""); // controls the error alert
 
-  const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<"All" | ApplicationStatus>("All");
+  const [search, setSearch] = useState(""); // text typed into a search bar
+  const [status, setStatus] = useState<"All" | ApplicationStatus>("All"); // dropdown value - either "ALL" or one of your ApplicationStatus values
 
-  const [deleteTarget, setDeleteTarget] = useState<Application | null>(null);
-  const [toast, setToast] = useState({ show: false, title: "", message: "" });
+  const [deleteTarget, setDeleteTarget] = useState<Application | null>(null); // The row the user selected to delete
+  const [toast, setToast] = useState({ show: false, title: "", message: "" }); // controls a little pop-up "Deleted" message
+
 
   async function load() {
     setErr("");

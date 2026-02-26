@@ -2,17 +2,20 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import type { ApplicationCreate, ApplicationStatus } from "../types/application";
 
+// A safe list of allowed statuses (typed). Used to build the <select> options.
 const STATUSES: ApplicationStatus[] = ["Applied", "Interview", "Offer", "Rejected"];
 
 type Props = {
-  initialValues?: ApplicationCreate;
-  onSubmit: (payload: ApplicationCreate) => void;
-  submitLabel?: string;
-  isSubmitting?: boolean;
+  initialValues?: ApplicationCreate; // Form can be used in: AddApplication and ApplicationDetails
+  onSubmit: (payload: ApplicationCreate) => void; // Parent supplies what should happen with the payload (POST or PATCH)
+  submitLabel?: string; // Text on the button (Create / Update / Save)
+  isSubmitting?: boolean; // Disables button & shows "Saving..."
 };
 
+// This creates an object of Application
 type Touched = Partial<Record<keyof ApplicationCreate, boolean>>;
 
+// Blank values when creating an Application
 export default function ApplicationForm({
   initialValues,
   onSubmit,
@@ -29,17 +32,22 @@ export default function ApplicationForm({
     notes: "",
   };
 
-  const [form, setForm] = useState<ApplicationCreate>(initialValues ?? defaults);
-  const [touched, setTouched] = useState<Touched>({});
+  const [form, setForm] = useState<ApplicationCreate>(initialValues ?? defaults); // holds the current values of all inputs
+  const [touched, setTouched] = useState<Touched>({}); // tracks what the user has "touched" for validation display
 
+  // InitialValues is undefined, then later becomes real data. this effect updates the form when that happens.
   useEffect(() => {
     setForm(initialValues ?? defaults);
   }, [initialValues]);
 
+  // name must be a valid key like "company" or "status"
+  // value must match that field's type
   function setField<K extends keyof ApplicationCreate>(name: K, value: ApplicationCreate[K]) {
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value })); 
   }
 
+  // Only validates required fields
+  // Stores error strings (empty string means "no error")
   const errors = useMemo(() => {
     return {
       company: form.company.trim() ? "" : "Company is required.",
@@ -47,14 +55,21 @@ export default function ApplicationForm({
     };
   }, [form.company, form.position]);
 
-  const isValid = !errors.company && !errors.position;
+  const isValid = !errors.company && !errors.position; // if both are empty strings, the form is valid
 
+  // Prevents browser refresh,
+  // Marks required fields as touced so errors show if missing,
+  // Stops if invalid
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setTouched({ company: true, position: true });
 
     if (!isValid) return;
 
+    // THis ensures: 
+    // required text fields are trimmed,
+    // optional strings don't become undefined unexpectedly,
+    // date is always a string (or empty string)
     const payload: ApplicationCreate = {
       ...form,
       company: form.company.trim(),
@@ -65,7 +80,7 @@ export default function ApplicationForm({
       dateApplied: form.dateApplied || "",
     };
 
-    onSubmit(payload);
+    onSubmit(payload); // The parent decides what happen: Add page -> POST, Details -> PATCH
   }
 
   return (
