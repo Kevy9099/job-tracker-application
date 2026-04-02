@@ -5,7 +5,7 @@
  * 3. Controls what components renders for each path.
  * 4. Wraps everything with shared layout (Navbar + Foot)
  */
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppNavbar from "./components/AppNavbar";
 import AppFooter from "./components/AppFooter";
 
@@ -26,7 +26,7 @@ import ApplicationDetails from "./pages/ApplicationDetails";
  */
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppNavbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -35,7 +35,7 @@ export default function App() {
           <Route path="/applications/:id" element={<ApplicationDetails />} />
         </Routes>
         <AppFooter />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
